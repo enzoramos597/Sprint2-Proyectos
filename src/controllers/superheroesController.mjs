@@ -1,5 +1,6 @@
 import { obtenerSuperheroePorId, obtenerTodosLosSuperHeroes, buscarSuperheroesPorAtributo, obtenerSuperheroesMayoresDe30 } from "../services/superheroesService.mjs";
 import { renderizarSuperheroe, renderizarListaSuperheroes } from "../views/responseView.mjs";
+//import SuperHeroRepository from "../repositories/SuperHeroRepository.mjs";
 
 export async function obtenerSuperheroePorIdController(req, res) {
     try{
@@ -41,6 +42,7 @@ export async function buscarSuperheroesPorAtributoController(req, res) {
         res.status(500).send({ mensaje: 'Error al buscar los superheroes', error: error.message })
     }
 }
+
 
 export async function obtenerSuperheroresMayoresDe30Controller(req, res) {
     try {
