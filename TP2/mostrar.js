@@ -36,14 +36,14 @@ async function insertSuperHero() {
     console.log('✅ Superhéroe insertado:', hero);
 }
 
-//insertSuperHero();
+
 const mostrar = async ()=>{
     const SuperHero = await Superhero.find()
     console.log(SuperHero);
 }
 
 
-//mostrar();
+
 
 async function updateSuperHero(id){
     const result = await Superhero.updateOne(
@@ -55,7 +55,28 @@ async function updateSuperHero(id){
     console.log('Resultado de la actualización:', result);
 }
 
-updateSuperHero('67ccd885f14f9381a8f4bbb5')
+async function updateSuperHero(nombreSuperHeroe){
+    const result = await Superhero.updateOne(
+        { nombreSuperHeroe: nombreSuperHeroe },
+        { 
+            $set: { edad: 30}
+        }
+    );
+    console.log('Resultado de la actualización:', result);
+}
+
+
+/*async function updateSuperHero(id){
+    const result = await Superhero.updateOne(
+        { _id: id },
+        { 
+            $set: { edad: 25 }
+        }
+    );
+    console.log('Resultado de la actualización:', result);
+}
+
+
 
 const actualizar = async (id) => {
     const result = await Superhero.updateOne({_id:id},
@@ -65,14 +86,23 @@ const actualizar = async (id) => {
             }
         }
     )
+}*/
+
+
+
+async function deleteSuperHero(id) {
+    const result = await Superhero.deleteOne({ _id: id });
+     console.log('Superhéroe eliminado:', result);    
 }
 
+async function findSuperHeroes(){
+    const heroes = await Superhero.find({ planetaOrigen: 'Tierra'});
+    console.log('Supeheroes encontrados:', heroes);
+}
+//insertSuperHero();
+//mostrar();
+//updateSuperHero('Spiderman')
+//updateSuperHero('67ccd885f14f9381a8f4bbb5')
 //actualizar('67ccd885f14f9381a8f4bbb5')
-
-async function deleteSuperHero(nombreSuperHeroe) {
-    const result = await Superhero.deleteOne({ nombreSuperHeroe: nombreSuperHeroe });
-     console.log('Superhéroe eliminado:', result);
-    deleteSuperHero('Spiderman');
-}
-
-//deleteSuperHero("Spiderman");
+//deleteSuperHero('67ccd885f14f9381a8f4bbb5')
+//findSuperHeroes();
