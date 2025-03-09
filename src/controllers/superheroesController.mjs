@@ -19,7 +19,6 @@ export async function obtenerSuperheroePorIdController(req, res) {
 export async function obtenerTodosLosSuperheroresController(req, res) {
     try {
         const superheroes = await obtenerTodosLosSuperHeroes();
-
         const superheroesFormateados = renderizarListaSuperheroes(superheroes);
         res.status(200).json(superheroesFormateados);
     } catch (error) {
